@@ -33,13 +33,13 @@ fun StarterScreen() {
             ButtonsColumn()
         },
         modifier = Modifier
-            .background(color = MaterialTheme.colors.primary)
             .fillMaxSize()
+            .background(color = MaterialTheme.colors.primary)
     )
 }
 
 @Composable
-fun Toolbar() {
+private fun Toolbar() {
 
     TopAppBar(
         title = {
@@ -76,7 +76,7 @@ fun Toolbar() {
 }
 
 @Composable
-fun ButtonsColumn() {
+private fun ButtonsColumn() {
 
     Column(
         content = {
@@ -104,7 +104,7 @@ fun ButtonsColumn() {
 }
 
 @Composable
-fun MakeDeliveryButton() {
+private fun MakeDeliveryButton() {
 
     Button(
         onClick = {
@@ -145,7 +145,7 @@ fun MakeDeliveryButton() {
 }
 
 @Composable
-fun FeedbackButton() {
+private fun FeedbackButton() {
 
     Button(
         onClick = {
@@ -185,7 +185,7 @@ fun FeedbackButton() {
 }
 
 @Composable
-fun MakeBookingButton() {
+private fun MakeBookingButton() {
 
     Button(
         onClick = {
