@@ -18,19 +18,22 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.rest.R
 
-@Preview
+
 @Composable
-fun StarterScreen() {
+fun StarterScreen(
+    startBooking: () -> Unit
+) {
 
     Column(
         content = {
             Toolbar()
-            ButtonsColumn()
+            ButtonsColumn(
+                bookingClick = startBooking
+            )
         },
         modifier = Modifier
             .fillMaxSize()
@@ -76,7 +79,9 @@ private fun Toolbar() {
 }
 
 @Composable
-private fun ButtonsColumn() {
+private fun ButtonsColumn(
+    bookingClick: () -> Unit
+) {
 
     Column(
         content = {
@@ -96,7 +101,9 @@ private fun ButtonsColumn() {
                     .height(16.dp)
             )
 
-            MakeBookingButton()
+            MakeBookingButton(
+                bookingClick = bookingClick
+            )
         },
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center
@@ -185,11 +192,13 @@ private fun FeedbackButton() {
 }
 
 @Composable
-private fun MakeBookingButton() {
+private fun MakeBookingButton(
+    bookingClick: () -> Unit
+) {
 
     Button(
         onClick = {
-
+            bookingClick.invoke()
         },
         modifier = Modifier
             .indication(
