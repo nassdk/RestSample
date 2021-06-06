@@ -16,20 +16,22 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import com.example.rest.R
 import com.google.accompanist.coil.rememberCoilPainter
 
-@Preview
 @Composable
-fun TablesScreen() {
+fun TablesScreen(
+    popBack: () -> Unit
+) {
 
     Column(
         content = {
-            Toolbar()
+            Toolbar(
+                navigationClickListener = { popBack.invoke() }
+            )
 //            LoadingView()
             TablesList(
                 tables = listOf(
@@ -63,7 +65,9 @@ fun TablesScreen() {
 }
 
 @Composable
-private fun Toolbar() {
+private fun Toolbar(
+    navigationClickListener: () -> Unit
+) {
 
     TopAppBar(
         title = {
@@ -76,7 +80,7 @@ private fun Toolbar() {
         },
         navigationIcon = {
             IconButton(
-                onClick = { /*TODO*/ },
+                onClick = { navigationClickListener.invoke() },
                 content = {
                     Image(
                         painter = painterResource(id = R.drawable.ic_arrow_left_black),

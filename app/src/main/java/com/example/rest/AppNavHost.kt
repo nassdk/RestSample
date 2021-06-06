@@ -30,7 +30,9 @@ fun AppNavHost() {
         )
         composable(
             route = Destinations.Tables, content = {
-                TablesScreen()
+                TablesScreen(
+                    popBack = { navController.popBackStack() }
+                )
             }
         )
     }
