@@ -220,7 +220,7 @@ private fun TableView(table: TableModel) {
                                     )
 
                                     Text(
-                                        text = "Заброонировать",
+                                        text = "Забронировать",
                                         fontSize = 14.sp,
                                         color = Color.Blue,
                                         fontStyle = FontStyle.Normal,
