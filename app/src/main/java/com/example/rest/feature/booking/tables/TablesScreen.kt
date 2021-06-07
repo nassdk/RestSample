@@ -24,7 +24,8 @@ import com.google.accompanist.coil.rememberCoilPainter
 
 @Composable
 fun TablesScreen(
-    popBack: () -> Unit
+    popBack: () -> Unit,
+    selectTable: (personCount: Int, tableNumber: String) -> Unit
 ) {
 
     Column(
@@ -32,7 +33,6 @@ fun TablesScreen(
             Toolbar(
                 navigationClickListener = { popBack.invoke() }
             )
-//            LoadingView()
             TablesList(
                 tables = listOf(
                     TableModel(
@@ -55,7 +55,8 @@ fun TablesScreen(
                         number = "3",
                         personCount = 2
                     )
-                )
+                ),
+                selectTable = { persons, table -> selectTable.invoke(persons, table) }
             )
         },
         modifier = Modifier
@@ -112,7 +113,10 @@ private fun LoadingView() {
 }
 
 @Composable
-private fun TablesList(tables: List<TableModel>) {
+private fun TablesList(
+    tables: List<TableModel>,
+    selectTable: (personCount: Int, tableNumber: String) -> Unit
+) {
 
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(space = 12.dp),
@@ -124,14 +128,22 @@ private fun TablesList(tables: List<TableModel>) {
         ),
         content = {
             tables.forEach {
-                item { TableView(table = it) }
+                item {
+                    TableView(
+                        table = it,
+                        selectTable = { persons, table -> selectTable.invoke(persons, table) }
+                    )
+                }
             }
         }
     )
 }
 
 @Composable
-private fun TableView(table: TableModel) {
+private fun TableView(
+    table: TableModel,
+    selectTable: (personCount: Int, tableNumber: String) -> Unit
+) {
 
     Card(
         modifier = Modifier
@@ -151,7 +163,7 @@ private fun TableView(table: TableModel) {
                             .height(height = 180.dp)
                     )
                     Button(
-                        onClick = { /*TODO*/ },
+                        onClick = { selectTable.invoke(table.personCount, table.number) },
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(height = 50.dp)
