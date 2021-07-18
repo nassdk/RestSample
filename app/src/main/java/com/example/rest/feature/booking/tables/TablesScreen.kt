@@ -19,8 +19,8 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
+import coil.compose.rememberImagePainter
 import com.example.rest.R
-import com.google.accompanist.coil.rememberCoilPainter
 
 @Composable
 fun TablesScreen(
@@ -155,7 +155,7 @@ private fun TableView(
                 modifier = Modifier.fillMaxSize(),
                 content = {
                     Image(
-                        painter = rememberCoilPainter(request = table.image),
+                        painter = rememberImagePainter(data = table.image),
                         contentDescription = "TableImage",
                         contentScale = ContentScale.Crop,
                         modifier = Modifier

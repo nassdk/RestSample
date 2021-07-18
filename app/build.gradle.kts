@@ -26,13 +26,14 @@ android {
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_1_8
         targetCompatibility = JavaVersion.VERSION_1_8
     }
+
     kotlinOptions {
         jvmTarget = "1.8"
-        useIR = true
     }
 
     buildFeatures {
@@ -40,24 +41,24 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.0.0-beta08"
+        kotlinCompilerExtensionVersion = "1.0.0-rc02"
     }
 }
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.5.0")
+    implementation("androidx.core:core-ktx:1.6.0")
     implementation("androidx.appcompat:appcompat:1.3.0")
 
-    implementation("androidx.compose.ui:ui:1.0.0-beta08")
-    implementation("androidx.compose.material:material:1.0.0-beta08")
-    implementation("androidx.compose.ui:ui-tooling:1.0.0-beta08")
+    implementation("androidx.compose.ui:ui:1.0.0-rc02")
+    implementation("androidx.compose.material:material:1.0.0-rc02")
+    implementation("androidx.compose.ui:ui-tooling:1.0.0-rc02")
 
-    implementation("androidx.constraintlayout:constraintlayout-compose:1.0.0-alpha07")
+    implementation("androidx.constraintlayout:constraintlayout-compose:1.0.0-alpha08")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.3.1")
-    implementation("androidx.activity:activity-compose:1.3.0-beta01")
-    implementation("androidx.navigation:navigation-compose:2.4.0-alpha02")
+    implementation("androidx.activity:activity-compose:1.3.0-rc02")
+    implementation("androidx.navigation:navigation-compose:2.4.0-alpha04")
 
-    implementation("com.google.android.material:material:1.3.0")
-    implementation("com.google.accompanist:accompanist-coil:0.9.1")
+    implementation("com.google.android.material:material:1.4.0")
+    implementation("com.google.accompanist:accompanist-coil:0.14.0")
 }
