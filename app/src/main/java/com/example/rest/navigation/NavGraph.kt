@@ -7,16 +7,16 @@ import com.example.rest.navigation.Destinations.Tables
 object Destinations {
     const val Starter = "starter"
     const val Tables = "tables"
-    const val BookingRegistration = "bookingRegistration/{tableNumber}/{tablePersons}"
+    const val BookingRegistration = "bookingRegistration"
 }
 
 class Actions(navController: NavController) {
 
     val startBooking: () -> Unit = {
-        navController.navigate(Tables)
+        navController.navigate(route = Tables)
     }
 
     val selectTable: (personCount: Int, tableNumber: String) -> Unit = { count, table ->
-        navController.navigate("$BookingRegistration/$count/$table")
+        navController.navigate(route = BookingRegistration.plus("/$table/$count"))
     }
 }

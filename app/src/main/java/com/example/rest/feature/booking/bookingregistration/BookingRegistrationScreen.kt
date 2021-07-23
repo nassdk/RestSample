@@ -23,7 +23,7 @@ import com.example.rest.R
 fun BookingRegistrationScreen(
     popBack: () -> Unit,
     tableNumber: String,
-    tablePersons: Int
+    tablePersons: String
 ) {
 
     Column(
@@ -69,7 +69,7 @@ fun Toolbar() {
 
 
 @Composable
-fun PersonalDataContainer(persons: Int) {
+fun PersonalDataContainer(persons: String) {
 
     Column(
         modifier = Modifier
@@ -130,7 +130,7 @@ fun InputField(hint: String) {
 }
 
 @Composable
-fun TablePersonsInfo(persons: Int) {
+fun TablePersonsInfo(persons: String) {
 
     Row(
         content = {
