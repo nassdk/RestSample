@@ -12,6 +12,7 @@
         <entry key="../../../../layout/compose-model-1620642881913.xml" value="0.25" />
         <entry key="../../../../layout/compose-model-1620643361782.xml" value="0.165" />
         <entry key="../../../../layout/compose-model-1620644371533.xml" value="0.165" />
+        <entry key="../../../../layout/compose-model-1629541976181.xml" value="0.1" />
         <entry key="..\:/Users/User/StudioProjects/RestSample/app/src/main/res/drawable/ic_booking.xml" value="0.590625" />
         <entry key="..\:/Users/User/StudioProjects/RestSample/app/src/main/res/drawable/ic_chevron_right_blue.xml" value="0.590625" />
         <entry key="..\:/Users/User/StudioProjects/RestSample/app/src/main/res/drawable/ic_menu.xml" value="0.590625" />
@@ -20,7 +21,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="JDK" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
