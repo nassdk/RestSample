@@ -29,16 +29,15 @@ fun BookingRegistrationScreen(
     Column(
         modifier = Modifier.fillMaxSize(),
         content = {
-            Toolbar()
+            Toolbar(backButtonListener = popBack)
             PersonalDataContainer(persons = tablePersons)
             ActionsContainer()
         }
     )
 }
 
-@Preview
 @Composable
-fun Toolbar() {
+fun Toolbar(backButtonListener: () -> Unit) {
 
     TopAppBar(
         title = {
@@ -51,7 +50,7 @@ fun Toolbar() {
         },
         navigationIcon = {
             IconButton(
-                onClick = { /*TODO*/ },
+                onClick = backButtonListener,
                 content = {
                     Image(
                         painter = painterResource(id = R.drawable.ic_arrow_left_black),
