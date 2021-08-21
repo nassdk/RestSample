@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -72,8 +73,8 @@ fun PersonalDataContainer(persons: String) {
 
     Column(
         modifier = Modifier
-            .fillMaxSize()
-            .padding(horizontal = 16.dp),
+            .fillMaxWidth()
+            .padding(horizontal = 16.dp, vertical = 12.dp),
         verticalArrangement = Arrangement.Center,
         content = {
 
@@ -154,13 +155,11 @@ fun ActionsContainer() {
 
     Column(
         content = {
-
             Button(
                 onClick = {
 
                 },
                 modifier = Modifier
-                    .background(color = MaterialTheme.colors.primary)
                     .height(height = 46.dp)
                     .padding(horizontal = 16.dp)
                     .fillMaxWidth(),
@@ -170,14 +169,14 @@ fun ActionsContainer() {
                 ),
                 shape = RoundedCornerShape(size = 4.dp)
             ) {
-
                 Text(
                     text = "Сделать предзаказ",
                     fontSize = 16.sp,
                     color = Color.Blue,
+                    textAlign = TextAlign.Center,
                     modifier = Modifier
                         .weight(weight = 1f)
-                        .padding(start = 8.dp)
+                        .fillMaxWidth()
                 )
             }
 
@@ -192,23 +191,28 @@ fun ActionsContainer() {
 
                 },
                 modifier = Modifier
-                    .background(color = Color.Yellow)
                     .height(height = 46.dp)
                     .padding(horizontal = 16.dp)
                     .fillMaxWidth(),
+                colors = ButtonDefaults.buttonColors(
+                    backgroundColor = Color.Yellow
+                ),
                 shape = RoundedCornerShape(size = 4.dp)
             ) {
-
                 Text(
                     text = "Забронировать стол",
                     fontSize = 16.sp,
-                    color = Color.White,
+                    color = Color.Black,
+                    textAlign = TextAlign.Center,
                     modifier = Modifier
                         .weight(weight = 1f)
-                        .padding(start = 8.dp)
+                        .fillMaxWidth()
                 )
             }
         },
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(bottom = 8.dp),
+        verticalArrangement = Arrangement.Bottom
     )
 }
