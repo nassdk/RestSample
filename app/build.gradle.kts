@@ -61,4 +61,5 @@ dependencies {
 
     implementation("com.google.android.material:material:1.4.0")
     implementation("com.google.accompanist:accompanist-coil:0.14.0")
+    implementation("com.google.accompanist:accompanist-navigation-animation:0.17.0")
 }

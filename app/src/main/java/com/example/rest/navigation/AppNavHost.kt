@@ -1,39 +1,66 @@
 package com.example.rest.navigation
 
+import androidx.compose.animation.ExperimentalAnimationApi
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.slideInHorizontally
+import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.navigation.NavType
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.navArgument
-import androidx.navigation.compose.rememberNavController
 import com.example.rest.feature.booking.bookingregistration.BookingRegistrationScreen
 import com.example.rest.feature.booking.tables.TablesScreen
 import com.example.rest.feature.starter.StarterScreen
+import com.google.accompanist.navigation.animation.AnimatedNavHost
+import com.google.accompanist.navigation.animation.composable
+import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 
+
+private const val ANIMATION_DURATION = 350
+private const val ANIMATION_OFFSET = 1000
+
+@ExperimentalAnimationApi
 @Composable
 fun AppNavHost() {
 
-    val navController = rememberNavController()
+    val navController = rememberAnimatedNavController()
 
     val actions = remember(navController, calculation = {
         Actions(navController = navController)
     })
 
-    NavHost(navController = navController, startDestination = Destinations.Starter) {
+    AnimatedNavHost(navController = navController, startDestination = Destinations.Starter) {
 
         composable(
-            route = Destinations.Starter, content = {
+            route = Destinations.Starter,
+            content = {
                 StarterScreen(
                     startBooking = actions.startBooking
                 )
             }
         )
         composable(
-            route = Destinations.Tables, content = {
+            route = Destinations.Tables,
+            content = {
                 TablesScreen(
                     popBack = { navController.popBackStack() },
                     selectTable = { persons, table -> actions.selectTable.invoke(persons, table) }
+                )
+            },
+            enterTransition = { initial, _ ->
+                val route = initial.destination.route.orEmpty()
+
+                if (!route.startsWith(prefix = Destinations.BookingRegistration)) {
+                    slideInHorizontally(
+                        initialOffsetX = { ANIMATION_OFFSET },
+                        animationSpec = tween(durationMillis = ANIMATION_DURATION)
+                    )
+                } else null
+            },
+            popExitTransition = { _, _ ->
+                slideOutHorizontally(
+                    targetOffsetX = { ANIMATION_OFFSET },
+                    animationSpec = tween(durationMillis = ANIMATION_DURATION)
                 )
             }
         )
@@ -63,6 +90,18 @@ fun AppNavHost() {
                     popBack = { navController.popBackStack() },
                     tableNumber = tableNumber,
                     tablePersons = personCount
+                )
+            },
+            enterTransition = { _, _ ->
+                slideInHorizontally(
+                    initialOffsetX = { ANIMATION_OFFSET },
+                    animationSpec = tween(durationMillis = ANIMATION_DURATION)
+                )
+            },
+            popExitTransition = { _, _ ->
+                slideOutHorizontally(
+                    targetOffsetX = { ANIMATION_OFFSET },
+                    animationSpec = tween(durationMillis = ANIMATION_DURATION)
                 )
             }
         )
