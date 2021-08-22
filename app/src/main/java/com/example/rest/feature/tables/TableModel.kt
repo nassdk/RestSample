@@ -1,4 +1,4 @@
-package com.example.rest.feature.booking.tables
+package com.example.rest.feature.tables
 
 data class TableModel(
     val id: Int,

@@ -1,4 +1,4 @@
-package com.example.rest.feature.booking.tables
+package com.example.rest.feature.tables
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 

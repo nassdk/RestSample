@@ -1,4 +1,4 @@
-package com.example.rest.feature.booking.bookingregistration
+package com.example.rest.feature.bookingregistration
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image

@@ -8,9 +8,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.navigation.NavType
 import androidx.navigation.compose.navArgument
-import com.example.rest.feature.booking.bookingregistration.BookingRegistrationScreen
-import com.example.rest.feature.booking.tables.TablesScreen
+import com.example.rest.feature.bookingregistration.BookingRegistrationScreen
 import com.example.rest.feature.starter.StarterScreen
+import com.example.rest.feature.tables.TablesScreen
 import com.google.accompanist.navigation.animation.AnimatedNavHost
 import com.google.accompanist.navigation.animation.composable
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
