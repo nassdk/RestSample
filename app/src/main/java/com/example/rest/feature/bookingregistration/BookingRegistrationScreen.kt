@@ -18,6 +18,10 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.rest.R
 
+
+const val ARG_TABLE_NUMBER = "ARG_TABLE_NUMBER"
+const val ARG_PERSONS_COUNT = "ARG_PERSONS_COUNT"
+
 @Composable
 fun BookingRegistrationScreen(
     popBack: () -> Unit,

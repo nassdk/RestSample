@@ -6,8 +6,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.navigation.NavType
 import androidx.navigation.compose.navArgument
+import com.example.rest.feature.bookingregistration.ARG_PERSONS_COUNT
+import com.example.rest.feature.bookingregistration.ARG_TABLE_NUMBER
 import com.example.rest.feature.bookingregistration.BookingRegistrationScreen
 import com.example.rest.feature.ordersuccess.OrderSuccessScreen
+import com.example.rest.feature.starter.ARG_IS_BOOKING
 import com.example.rest.feature.starter.StarterScreen
 import com.example.rest.feature.tables.TablesScreen
 import com.example.rest.utils.orFalse
@@ -65,25 +68,25 @@ fun AppNavHost() {
             }
         )
         composable(
-            route = Destinations.BookingRegistration.plus("/{${Args.BookingRegistration.ARG_TABLE_NUMBER}}/{${Args.BookingRegistration.ARG_PERSONS_COUNT}}"),
+            route = Destinations.BookingRegistration.plus("/{${ARG_TABLE_NUMBER}}/{${ARG_PERSONS_COUNT}}"),
             arguments = listOf(
                 navArgument(
-                    name = Args.BookingRegistration.ARG_TABLE_NUMBER,
+                    name = ARG_TABLE_NUMBER,
                     builder = { type = NavType.StringType }
                 ),
                 navArgument(
-                    name = Args.BookingRegistration.ARG_PERSONS_COUNT,
+                    name = ARG_PERSONS_COUNT,
                     builder = { type = NavType.StringType }
                 )
             ),
             content = { backStackEntry ->
 
                 val tableNumber = backStackEntry.arguments
-                    ?.getString(Args.BookingRegistration.ARG_TABLE_NUMBER)
+                    ?.getString(ARG_TABLE_NUMBER)
                     .orEmpty()
 
                 val personCount = backStackEntry.arguments
-                    ?.getString(Args.BookingRegistration.ARG_PERSONS_COUNT)
+                    ?.getString(ARG_PERSONS_COUNT)
                     .orEmpty()
 
                 BookingRegistrationScreen(
@@ -107,17 +110,17 @@ fun AppNavHost() {
             }
         )
         composable(
-            route = Destinations.OrderThanks.plus("/{${Args.OrderThanksArgs.ARG_IS_BOOKING}}"),
+            route = Destinations.OrderThanks.plus("/{${ARG_IS_BOOKING}}"),
             arguments = listOf(
                 navArgument(
-                    name = Args.OrderThanksArgs.ARG_IS_BOOKING,
+                    name = ARG_IS_BOOKING,
                     builder = { type = NavType.BoolType }
                 )
             ),
             content = { navBackStackEntry ->
 
                 val isBooking = navBackStackEntry.arguments
-                    ?.getBoolean(Args.OrderThanksArgs.ARG_IS_BOOKING)
+                    ?.getBoolean(ARG_IS_BOOKING)
                     .orFalse()
 
                 OrderSuccessScreen(

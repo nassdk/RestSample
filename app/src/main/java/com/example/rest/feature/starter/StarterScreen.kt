@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.rest.R
 
+const val ARG_IS_BOOKING = "ARG_IS_BOOKING"
 
 @Composable
 fun StarterScreen(
