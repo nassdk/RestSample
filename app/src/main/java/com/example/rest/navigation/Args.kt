@@ -6,4 +6,8 @@ object Args {
         const val ARG_TABLE_NUMBER = "ARG_TABLE_NUMBER"
         const val ARG_PERSONS_COUNT = "ARG_PERSONS_COUNT"
     }
+
+    object OrderThanksArgs {
+        const val ARG_IS_BOOKING = "ARG_IS_BOOKING"
+    }
 }

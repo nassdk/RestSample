@@ -1,6 +1,5 @@
 package com.example.rest.feature.bookingregistration
 
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -15,7 +14,6 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.rest.R
@@ -24,7 +22,8 @@ import com.example.rest.R
 fun BookingRegistrationScreen(
     popBack: () -> Unit,
     tableNumber: String,
-    tablePersons: String
+    tablePersons: String,
+    finishBooking: () -> Unit
 ) {
 
     Column(
@@ -34,7 +33,7 @@ fun BookingRegistrationScreen(
         content = {
             Toolbar(backButtonListener = popBack)
             PersonalDataContainer(persons = tablePersons)
-            ActionsContainer()
+            ActionsContainer(finishBooking = finishBooking)
         }
     )
 }
@@ -151,47 +150,44 @@ fun TablePersonsInfo(persons: String) {
     )
 }
 
-@Preview
 @Composable
-fun ActionsContainer() {
+fun ActionsContainer(finishBooking: () -> Unit) {
 
     Column(
         content = {
+//            Button(
+//                onClick = {
+//
+//                },
+//                modifier = Modifier
+//                    .height(height = 46.dp)
+//                    .padding(horizontal = 16.dp)
+//                    .fillMaxWidth(),
+//                border = BorderStroke(
+//                    width = 1.dp,
+//                    color = Color.Blue,
+//                ),
+//                shape = RoundedCornerShape(size = 4.dp)
+//            ) {
+//                Text(
+//                    text = "Сделать предзаказ",
+//                    fontSize = 16.sp,
+//                    color = Color.Blue,
+//                    textAlign = TextAlign.Center,
+//                    modifier = Modifier
+//                        .weight(weight = 1f)
+//                        .fillMaxWidth()
+//                )
+//            }
+//
+//            Spacer(
+//                modifier = Modifier
+//                    .fillMaxWidth()
+//                    .height(height = 8.dp)
+//            )
+
             Button(
-                onClick = {
-
-                },
-                modifier = Modifier
-                    .height(height = 46.dp)
-                    .padding(horizontal = 16.dp)
-                    .fillMaxWidth(),
-                border = BorderStroke(
-                    width = 1.dp,
-                    color = Color.Blue,
-                ),
-                shape = RoundedCornerShape(size = 4.dp)
-            ) {
-                Text(
-                    text = "Сделать предзаказ",
-                    fontSize = 16.sp,
-                    color = Color.Blue,
-                    textAlign = TextAlign.Center,
-                    modifier = Modifier
-                        .weight(weight = 1f)
-                        .fillMaxWidth()
-                )
-            }
-
-            Spacer(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(height = 8.dp)
-            )
-
-            Button(
-                onClick = {
-
-                },
+                onClick = finishBooking,
                 modifier = Modifier
                     .height(height = 46.dp)
                     .padding(horizontal = 16.dp)
