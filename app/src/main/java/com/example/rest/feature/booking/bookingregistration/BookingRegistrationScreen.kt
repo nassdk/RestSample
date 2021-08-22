@@ -28,7 +28,9 @@ fun BookingRegistrationScreen(
 ) {
 
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = MaterialTheme.colors.primary),
         content = {
             Toolbar(backButtonListener = popBack)
             PersonalDataContainer(persons = tablePersons)
