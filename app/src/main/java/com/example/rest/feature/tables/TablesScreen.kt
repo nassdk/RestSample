@@ -21,6 +21,8 @@ import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import coil.compose.rememberImagePainter
 import com.example.rest.R
+import com.example.rest.feature.tables.data.TableModel
+import com.example.rest.ui.common.ToolbarBase
 
 @Composable
 fun TablesScreen(
@@ -30,70 +32,18 @@ fun TablesScreen(
 
     Column(
         content = {
-            Toolbar(
-                navigationClickListener = { popBack.invoke() }
+            ToolbarBase(
+                navigationClickListener = { popBack.invoke() },
+                title = "Бронирование стола"
             )
             TablesList(
-                tables = listOf(
-                    TableModel(
-                        id = 1,
-                        image = "https://raw.githubusercontent.com/Aselder-Over/MockApiTestProject/main/TableInfo/TablesImages/table11.png",
-                        number = "3",
-                        personCount = 2
-                    ),
-
-                    TableModel(
-                        id = 1,
-                        image = "https://raw.githubusercontent.com/Aselder-Over/MockApiTestProject/main/TableInfo/TablesImages/table11.png",
-                        number = "3",
-                        personCount = 2
-                    ),
-
-                    TableModel(
-                        id = 1,
-                        image = "https://raw.githubusercontent.com/Aselder-Over/MockApiTestProject/main/TableInfo/TablesImages/table11.png",
-                        number = "3",
-                        personCount = 2
-                    )
-                ),
+                tables = mockkTables,
                 selectTable = { persons, table -> selectTable.invoke(persons, table) }
             )
         },
         modifier = Modifier
             .fillMaxSize()
             .background(color = MaterialTheme.colors.primary)
-    )
-}
-
-@Composable
-private fun Toolbar(
-    navigationClickListener: () -> Unit
-) {
-
-    TopAppBar(
-        title = {
-            Text(
-                text = "Бронирование стола",
-                fontSize = 16.sp,
-                color = MaterialTheme.colors.secondary,
-                modifier = Modifier.fillMaxWidth()
-            )
-        },
-        navigationIcon = {
-            IconButton(
-                onClick = { navigationClickListener.invoke() },
-                content = {
-                    Image(
-                        painter = painterResource(id = R.drawable.ic_arrow_left_black),
-                        contentDescription = "ArrowBack"
-                    )
-                }
-            )
-        },
-        modifier = Modifier
-            .height(height = 44.dp)
-            .fillMaxWidth(),
-        backgroundColor = MaterialTheme.colors.primary
     )
 }
 
@@ -276,3 +226,26 @@ private fun TableView(
     )
 
 }
+
+val mockkTables = listOf(
+    TableModel(
+        id = 1,
+        image = "https://raw.githubusercontent.com/Aselder-Over/MockApiTestProject/main/TableInfo/TablesImages/table11.png",
+        number = "3",
+        personCount = 2
+    ),
+
+    TableModel(
+        id = 1,
+        image = "https://raw.githubusercontent.com/Aselder-Over/MockApiTestProject/main/TableInfo/TablesImages/table11.png",
+        number = "3",
+        personCount = 2
+    ),
+
+    TableModel(
+        id = 1,
+        image = "https://raw.githubusercontent.com/Aselder-Over/MockApiTestProject/main/TableInfo/TablesImages/table11.png",
+        number = "3",
+        personCount = 2
+    )
+)
