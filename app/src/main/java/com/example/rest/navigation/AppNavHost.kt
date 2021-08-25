@@ -9,6 +9,7 @@ import androidx.navigation.compose.navArgument
 import com.example.rest.feature.bookingregistration.ARG_PERSONS_COUNT
 import com.example.rest.feature.bookingregistration.ARG_TABLE_NUMBER
 import com.example.rest.feature.bookingregistration.BookingRegistrationScreen
+import com.example.rest.feature.menu.MenuScreen
 import com.example.rest.feature.ordersuccess.OrderSuccessScreen
 import com.example.rest.feature.starter.ARG_IS_BOOKING
 import com.example.rest.feature.starter.StarterScreen
@@ -38,7 +39,8 @@ fun AppNavHost() {
             route = Destinations.Starter,
             content = {
                 StarterScreen(
-                    startBooking = actions.startBooking
+                    startBooking = actions.startBooking,
+                    makeDeliveryClick = actions.openMenu
                 )
             }
         )
@@ -140,6 +142,28 @@ fun AppNavHost() {
             popExitTransition = { _, _ ->
                 slideOutVertically(
                     targetOffsetY = { ANIMATION_OFFSET },
+                    animationSpec = tween(durationMillis = ANIMATION_DURATION)
+                )
+            }
+        )
+        composable(
+            route = Destinations.Menu,
+            content = {
+                MenuScreen(
+                    backButtonListener = {
+                        navController.popBackStack()
+                    }
+                )
+            },
+            enterTransition = { _, _ ->
+                slideInHorizontally(
+                    initialOffsetX = { ANIMATION_OFFSET },
+                    animationSpec = tween(durationMillis = ANIMATION_DURATION)
+                )
+            },
+            popExitTransition = { _, _ ->
+                slideOutHorizontally(
+                    targetOffsetX = { ANIMATION_OFFSET },
                     animationSpec = tween(durationMillis = ANIMATION_DURATION)
                 )
             }

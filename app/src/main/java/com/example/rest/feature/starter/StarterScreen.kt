@@ -26,14 +26,16 @@ const val ARG_IS_BOOKING = "ARG_IS_BOOKING"
 
 @Composable
 fun StarterScreen(
-    startBooking: () -> Unit
+    startBooking: () -> Unit,
+    makeDeliveryClick: () -> Unit
 ) {
 
     Column(
         content = {
             Toolbar()
             ButtonsColumn(
-                bookingClick = startBooking
+                bookingClick = startBooking,
+                makeDeliveryClick = makeDeliveryClick
             )
         },
         modifier = Modifier
@@ -81,12 +83,13 @@ private fun Toolbar() {
 
 @Composable
 private fun ButtonsColumn(
-    bookingClick: () -> Unit
+    bookingClick: () -> Unit,
+    makeDeliveryClick: () -> Unit
 ) {
 
     Column(
         content = {
-            MakeDeliveryButton()
+            MakeDeliveryButton(onClick = makeDeliveryClick)
 
             Spacer(
                 modifier = Modifier
@@ -112,12 +115,10 @@ private fun ButtonsColumn(
 }
 
 @Composable
-private fun MakeDeliveryButton() {
+private fun MakeDeliveryButton(onClick: () -> Unit) {
 
     Button(
-        onClick = {
-
-        },
+        onClick = onClick,
         modifier = Modifier
             .background(color = MaterialTheme.colors.primary)
             .height(height = 56.dp)
