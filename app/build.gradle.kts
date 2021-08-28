@@ -23,7 +23,10 @@ android {
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 
@@ -51,6 +54,7 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.3.1")
 
     implementation("androidx.compose.ui:ui:1.1.0-alpha02")
+    implementation("androidx.compose.ui:ui-util:1.1.0-alpha02")
     implementation("androidx.compose.material:material:1.1.0-alpha02")
     implementation("androidx.compose.ui:ui-tooling:1.1.0-alpha02")
 
@@ -60,6 +64,9 @@ dependencies {
     implementation("androidx.navigation:navigation-compose:2.4.0-alpha07")
 
     implementation("com.google.android.material:material:1.4.0")
+
     implementation("com.google.accompanist:accompanist-coil:0.14.0")
     implementation("com.google.accompanist:accompanist-navigation-animation:0.17.0")
+    implementation("com.google.accompanist:accompanist-pager:0.17.0")
+    implementation("com.google.accompanist:accompanist-pager-indicators:0.17.0")
 }

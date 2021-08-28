@@ -32,7 +32,8 @@ import kotlinx.coroutines.launch
 
 @Composable
 fun MenuScreen(
-    backButtonListener: () -> Unit
+    backButtonListener: () -> Unit,
+    onProductClicked: () -> Unit
 ) {
 
     Column(
@@ -43,7 +44,7 @@ fun MenuScreen(
             ToolbarBase(navigationClickListener = backButtonListener, title = "VERANDA")
             Categories()
             DividerView()
-            Products()
+            Products(onProductClicked = onProductClicked)
         }
     )
 }
@@ -82,18 +83,18 @@ fun Categories() {
 }
 
 @Composable
-fun DividerView() {
+fun DividerView(modifier: Modifier = Modifier.fillMaxWidth()) {
 
     Divider(
-        color = Color.Gray,
-        modifier = Modifier.fillMaxWidth()
+        color = Color.LightGray,
+        modifier = modifier
     )
 }
 
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun Products() {
+fun Products(onProductClicked: () -> Unit) {
 
     val itemWidth = (LocalConfiguration.current.screenWidthDp / 2 - 40).dp
 
@@ -104,7 +105,11 @@ fun Products() {
         content = {
             mockkProducts.forEach { product ->
                 item {
-                    Product(model = product, itemWidth = itemWidth)
+                    Product(
+                        model = product,
+                        itemWidth = itemWidth,
+                        onProductClicked = onProductClicked
+                    )
                 }
             }
         }
@@ -146,7 +151,7 @@ fun CategoryItem(model: Category, isSelected: Boolean, categorySelected: () -> U
 }
 
 @Composable
-fun Product(model: ProductSmall, itemWidth: Dp) {
+fun Product(model: ProductSmall, itemWidth: Dp, onProductClicked: () -> Unit) {
 
     val imageSize = itemWidth - 48.dp
 
@@ -160,8 +165,11 @@ fun Product(model: ProductSmall, itemWidth: Dp) {
             )
             .border(
                 width = 1.dp,
-                color = Color.Gray,
+                color = Color.LightGray,
                 shape = RoundedCornerShape(size = 4.dp)
+            )
+            .clickable(
+                onClick = onProductClicked
             ),
         content = {
 
@@ -224,7 +232,7 @@ fun Product(model: ProductSmall, itemWidth: Dp) {
                     )
 
                     Button(
-                        onClick = { /*TODO*/ },
+                        onClick = { /* TODDO */ },
                         colors = ButtonDefaults.buttonColors(
                             backgroundColor = Color.Yellow
                         ),
