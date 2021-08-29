@@ -256,7 +256,7 @@ fun Relations() {
     Column(
         modifier = Modifier
             .padding(top = 20.dp)
-            .fillMaxSize(),
+            .fillMaxWidth(),
         content = {
             Text(
                 text = "Добавить в блюдо",
@@ -271,7 +271,7 @@ fun Relations() {
             LazyRow(
                 modifier = Modifier
                     .padding(top = 16.dp)
-                    .fillMaxSize(),
+                    .fillMaxWidth(),
                 contentPadding = PaddingValues(horizontal = 12.dp),
                 content = {
                     mockkProducts.forEach { additionalProduct ->
@@ -354,7 +354,7 @@ fun AdditionalProduct(model: ProductSmall) {
                     Text(
                         text = "${model.price}₽",
                         fontSize = 12.sp,
-                        fontWeight = FontWeight.Normal,
+                        fontWeight = FontWeight.Bold,
                         color = Color.Black,
                         textAlign = TextAlign.Center,
                         modifier = Modifier.padding(horizontal = 16.dp, vertical = 8.dp)
