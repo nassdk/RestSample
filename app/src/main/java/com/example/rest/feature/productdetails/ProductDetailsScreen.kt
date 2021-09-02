@@ -24,9 +24,9 @@ import androidx.compose.ui.util.lerp
 import androidx.constraintlayout.compose.ConstraintLayout
 import coil.compose.rememberImagePainter
 import com.example.rest.R
-import com.example.rest.feature.menu.DividerView
 import com.example.rest.feature.menu.data.ProductSmall
 import com.example.rest.feature.menu.mockkProducts
+import com.example.rest.ui.common.CustomDividerView
 import com.example.rest.ui.common.ToolbarBase
 import com.google.accompanist.pager.*
 import kotlin.math.absoluteValue
@@ -34,7 +34,8 @@ import kotlin.math.absoluteValue
 
 @Composable
 fun ProductDetailsScreen(
-    backButtonListener: () -> Unit
+    backButtonListener: () -> Unit,
+    toProductClick: () -> Unit
 ) {
 
     Column(
@@ -46,13 +47,13 @@ fun ProductDetailsScreen(
                 navigationClickListener = backButtonListener,
                 title = "Том - ям с устрицами и мидиями"
             )
-            Content()
+            Content(toProductClick = toProductClick)
         }
     )
 }
 
 @Composable
-fun Content() {
+fun Content(toProductClick: () -> Unit) {
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -62,8 +63,8 @@ fun Content() {
             ProductImages()
             ProductName()
             ProductDescription()
-            ProductPrice()
-            DividerView(
+            ProductPrice(toProductClick = toProductClick)
+            CustomDividerView(
                 modifier = Modifier
                     .padding(top = 20.dp)
                     .fillMaxWidth()
@@ -204,7 +205,7 @@ fun ProductDescription() {
 }
 
 @Composable
-fun ProductPrice() {
+fun ProductPrice(toProductClick: () -> Unit) {
 
     Box(
         modifier = Modifier
@@ -232,7 +233,7 @@ fun ProductPrice() {
             )
 
             Button(
-                onClick = { /*TODO*/ },
+                onClick = toProductClick,
                 shape = RoundedCornerShape(size = 4.dp),
                 modifier = Modifier.align(alignment = Alignment.CenterEnd),
                 colors = ButtonDefaults.buttonColors(backgroundColor = Color.Yellow),
@@ -378,7 +379,7 @@ fun AdditionalProduct(model: ProductSmall) {
                     ),
                 content = {
                     Image(
-                        painter = painterResource(id = R.drawable.ic_plus_white),
+                        painter = painterResource(id = R.drawable.ic_plus_white_full),
                         contentDescription = "ic_plus_white",
                         modifier = Modifier.fillMaxSize()
                     )

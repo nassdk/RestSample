@@ -7,7 +7,10 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.Button
+import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -27,6 +30,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import coil.compose.rememberImagePainter
 import com.example.rest.feature.menu.data.Category
 import com.example.rest.feature.menu.data.ProductSmall
+import com.example.rest.ui.common.CustomDividerView
 import com.example.rest.ui.common.ToolbarBase
 import kotlinx.coroutines.launch
 
@@ -43,7 +47,7 @@ fun MenuScreen(
         content = {
             ToolbarBase(navigationClickListener = backButtonListener, title = "VERANDA")
             Categories()
-            DividerView()
+            CustomDividerView()
             Products(onProductClicked = onProductClicked)
         }
     )
@@ -79,15 +83,6 @@ fun Categories() {
                 }
             }
         }
-    )
-}
-
-@Composable
-fun DividerView(modifier: Modifier = Modifier.fillMaxWidth()) {
-
-    Divider(
-        color = Color.LightGray,
-        modifier = modifier
     )
 }
 
