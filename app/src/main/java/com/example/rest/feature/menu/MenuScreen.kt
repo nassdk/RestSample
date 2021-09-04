@@ -274,7 +274,7 @@ val mockkProducts = listOf(
         name = "Карбонара в сливочном соусе с креветками",
         image = "https://raw.githubusercontent.com/Aselder-Over/MockApiTestProject/main/ImageMenu/Category/HotDishCategory/Group%2034.png",
         price = 450,
-        quantity = 0
+        quantity = 1
     ),
     ProductSmall(
         name = "Том - ям с устрицами и мидиями",
@@ -298,12 +298,12 @@ val mockkProducts = listOf(
         name = "Карбонара в сливочном соусе с креветками",
         image = "https://raw.githubusercontent.com/Aselder-Over/MockApiTestProject/main/ImageMenu/Category/HotDishCategory/Group%2034.png",
         price = 450,
-        quantity = 0
+        quantity = 2
     ),
     ProductSmall(
         name = "Карбонара в сливочном соусе с креветками",
         image = "https://raw.githubusercontent.com/Aselder-Over/MockApiTestProject/main/ImageMenu/Category/HotDishCategory/Group%2034.png",
         price = 450,
-        quantity = 0
+        quantity = 4
     )
 )

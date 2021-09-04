@@ -10,6 +10,7 @@ import com.example.rest.feature.bookingregistration.ARG_PERSONS_COUNT
 import com.example.rest.feature.bookingregistration.ARG_TABLE_NUMBER
 import com.example.rest.feature.bookingregistration.BookingRegistrationScreen
 import com.example.rest.feature.menu.MenuScreen
+import com.example.rest.feature.order.OrderScreen
 import com.example.rest.feature.ordersuccess.OrderSuccessScreen
 import com.example.rest.feature.productdetails.ProductDetailsScreen
 import com.example.rest.feature.starter.ARG_IS_BOOKING
@@ -180,18 +181,45 @@ fun AppNavHost() {
                 ProductDetailsScreen(
                     backButtonListener = {
                         navController.popBackStack()
-                    }
+                    },
+                    toProductClick = actions.toOrder
                 )
             },
-            enterTransition = { _, _ ->
-                slideInVertically(
-                    initialOffsetY = { ANIMATION_OFFSET },
-                    animationSpec = tween(durationMillis = ANIMATION_DURATION)
-                )
+            enterTransition = { initial, _ ->
+                val route = initial.destination.route.orEmpty()
+
+                if (!route.startsWith(prefix = Destinations.Order)) {
+                    slideInVertically(
+                        initialOffsetY = { ANIMATION_OFFSET },
+                        animationSpec = tween(durationMillis = ANIMATION_DURATION)
+                    )
+                } else null
             },
             popExitTransition = { _, _ ->
                 slideOutVertically(
                     targetOffsetY = { ANIMATION_OFFSET },
+                    animationSpec = tween(durationMillis = ANIMATION_DURATION)
+                )
+            }
+        )
+        composable(
+            route = Destinations.Order,
+            content = {
+                OrderScreen(
+                    backButtonListener = {
+                        navController.popBackStack()
+                    }
+                )
+            },
+            enterTransition = { _, _ ->
+                slideInHorizontally(
+                    initialOffsetX = { ANIMATION_OFFSET },
+                    animationSpec = tween(durationMillis = ANIMATION_DURATION)
+                )
+            },
+            popExitTransition = { _, _ ->
+                slideOutHorizontally(
+                    targetOffsetX = { ANIMATION_OFFSET },
                     animationSpec = tween(durationMillis = ANIMATION_DURATION)
                 )
             }
