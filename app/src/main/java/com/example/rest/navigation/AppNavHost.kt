@@ -5,7 +5,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.navigation.NavType
-import androidx.navigation.compose.navArgument
+import androidx.navigation.navArgument
 import com.example.rest.feature.bookingregistration.ARG_PERSONS_COUNT
 import com.example.rest.feature.bookingregistration.ARG_TABLE_NUMBER
 import com.example.rest.feature.bookingregistration.BookingRegistrationScreen
@@ -54,8 +54,8 @@ fun AppNavHost() {
                     selectTable = { persons, table -> actions.selectTable.invoke(persons, table) }
                 )
             },
-            enterTransition = { initial, _ ->
-                val route = initial.destination.route.orEmpty()
+            enterTransition = {
+                val route = initialState.destination.route.orEmpty()
 
                 if (!route.startsWith(prefix = Destinations.BookingRegistration)) {
                     slideInHorizontally(
@@ -64,7 +64,7 @@ fun AppNavHost() {
                     )
                 } else null
             },
-            popExitTransition = { _, _ ->
+            popExitTransition = {
                 slideOutHorizontally(
                     targetOffsetX = { ANIMATION_OFFSET },
                     animationSpec = tween(durationMillis = ANIMATION_DURATION)
@@ -100,13 +100,13 @@ fun AppNavHost() {
                     tablePersons = personCount
                 )
             },
-            enterTransition = { _, _ ->
+            enterTransition = {
                 slideInHorizontally(
                     initialOffsetX = { ANIMATION_OFFSET },
                     animationSpec = tween(durationMillis = ANIMATION_DURATION)
                 )
             },
-            popExitTransition = { _, _ ->
+            popExitTransition = {
                 slideOutHorizontally(
                     targetOffsetX = { ANIMATION_OFFSET },
                     animationSpec = tween(durationMillis = ANIMATION_DURATION)
@@ -135,13 +135,13 @@ fun AppNavHost() {
                 )
 
             },
-            enterTransition = { _, _ ->
+            enterTransition = {
                 slideInVertically(
                     initialOffsetY = { ANIMATION_OFFSET },
                     animationSpec = tween(durationMillis = ANIMATION_DURATION)
                 )
             },
-            popExitTransition = { _, _ ->
+            popExitTransition = {
                 slideOutVertically(
                     targetOffsetY = { ANIMATION_OFFSET },
                     animationSpec = tween(durationMillis = ANIMATION_DURATION)
@@ -158,8 +158,8 @@ fun AppNavHost() {
                     onProductClicked = actions.toProductDetail
                 )
             },
-            enterTransition = { initial, _ ->
-                val route = initial.destination.route.orEmpty()
+            enterTransition = {
+                val route = initialState.destination.route.orEmpty()
 
                 if (!route.startsWith(prefix = Destinations.ProductDetail)) {
                     slideInHorizontally(
@@ -168,7 +168,7 @@ fun AppNavHost() {
                     )
                 } else null
             },
-            popExitTransition = { _, _ ->
+            popExitTransition = {
                 slideOutHorizontally(
                     targetOffsetX = { ANIMATION_OFFSET },
                     animationSpec = tween(durationMillis = ANIMATION_DURATION)
@@ -185,8 +185,8 @@ fun AppNavHost() {
                     toProductClick = actions.toOrder
                 )
             },
-            enterTransition = { initial, _ ->
-                val route = initial.destination.route.orEmpty()
+            enterTransition = {
+                val route = initialState.destination.route.orEmpty()
 
                 if (!route.startsWith(prefix = Destinations.Order)) {
                     slideInVertically(
@@ -195,7 +195,7 @@ fun AppNavHost() {
                     )
                 } else null
             },
-            popExitTransition = { _, _ ->
+            popExitTransition = {
                 slideOutVertically(
                     targetOffsetY = { ANIMATION_OFFSET },
                     animationSpec = tween(durationMillis = ANIMATION_DURATION)
@@ -211,13 +211,13 @@ fun AppNavHost() {
                     }
                 )
             },
-            enterTransition = { _, _ ->
+            enterTransition = {
                 slideInHorizontally(
                     initialOffsetX = { ANIMATION_OFFSET },
                     animationSpec = tween(durationMillis = ANIMATION_DURATION)
                 )
             },
-            popExitTransition = { _, _ ->
+            popExitTransition = {
                 slideOutHorizontally(
                     targetOffsetX = { ANIMATION_OFFSET },
                     animationSpec = tween(durationMillis = ANIMATION_DURATION)
